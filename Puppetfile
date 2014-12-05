@@ -15,6 +15,7 @@ mod "thias/vsftpd"
 mod "nanliu/staging"
 mod "puppetlabs/tomcat"
 mod "thias/postfix"
+mod "puppetlabs/tomcat"
 
 # Modules from Github using various references
 mod "wordpress",

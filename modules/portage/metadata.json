@@ -1,0 +1,297 @@
+{
+  "name": "gentoo-portage",
+  "version": "2.2.0",
+  "source": "UNKNOWN",
+  "author": "gentoo",
+  "license": "GPLv2",
+  "summary": "Puppet types and providers for Gentoo portage",
+  "description": "UNKNOWN",
+  "project_page": "https://github.com/gentoo/puppet-portage",
+  "dependencies": [
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": "1.x"
+    }
+  ],
+  "types": [
+    {
+      "name": "eselect",
+      "doc": "",
+      "properties": [
+        {
+          "name": "set",
+          "doc": "The value of the eselect module.\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "The name of the eselect module.\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "eselect",
+          "doc": "* Required binaries: `/usr/bin/eselect`, `/usr/bin/gcc-config`."
+        }
+      ]
+    },
+    {
+      "name": "layman",
+      "doc": "The layman type to manage overlays",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "The name of the overlay\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "layman",
+          "doc": "The layman provider to manage overlays\n\n* Required binaries: `/usr/bin/layman`.\n* Default for `operatingsystem` == `gentoo`."
+        }
+      ]
+    },
+    {
+      "name": "webapp",
+      "doc": "",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "appname",
+          "doc": "The name of the package to install\n\n"
+        },
+        {
+          "name": "appversion",
+          "doc": "The version of the package to install\n\n"
+        },
+        {
+          "name": "secure",
+          "doc": "Whether to use htdocs-secure instead of htdocs.\n\nValid values are `yes`, `no`. "
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "The name of the webapp.\n\n"
+        },
+        {
+          "name": "server",
+          "doc": "The web server used to access the webapp.\n\n"
+        },
+        {
+          "name": "user",
+          "doc": "The user who owns installed configuration files.\n\n"
+        },
+        {
+          "name": "group",
+          "doc": "The group which owns installed configuration files.\n\n"
+        },
+        {
+          "name": "soft",
+          "doc": "Whether to use softlinks.\n\nValid values are `yes`, `no`. "
+        }
+      ],
+      "providers": [
+        {
+          "name": "webapp",
+          "doc": "* Required binaries: `/usr/sbin/webapp-config`.\n* Default for `operatingsystem` == `gentoo`."
+        }
+      ]
+    },
+    {
+      "name": "package_env",
+      "doc": "Set environment variables for a package.\n\npackage_env { 'dev-libs/boost':\n  env    => ['no-distcc', 'single-build-thread'],\n  target => 'boost',\n}",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "version",
+          "doc": "\n\n"
+        },
+        {
+          "name": "slot",
+          "doc": "\n\n"
+        },
+        {
+          "name": "env",
+          "doc": "The env files to apply\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The location of the package.env file\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "parsed",
+          "doc": "The package_env provider that uses the ParsedFile class"
+        }
+      ]
+    },
+    {
+      "name": "package_keywords",
+      "doc": "Set keywords for a package.\n\npackage_keywords { 'app-admin/puppet':\n  keywords  => ['~x86', '-hppa'],\n  target  => 'puppet',\n}",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "version",
+          "doc": "\n\n"
+        },
+        {
+          "name": "slot",
+          "doc": "\n\n"
+        },
+        {
+          "name": "keywords",
+          "doc": "The keywords(s) to use\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The location of the package.keywords file\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "parsed",
+          "doc": "The package_keywords provider that uses the ParsedFile class"
+        }
+      ]
+    },
+    {
+      "name": "package_mask",
+      "doc": "Mask packages in portage.\n\npackage_mask { 'app-admin/chef':\n  target  => 'chef',\n}",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "version",
+          "doc": "\n\n"
+        },
+        {
+          "name": "slot",
+          "doc": "\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The location of the package.mask file\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "parsed",
+          "doc": "The package_mask provider backed by parsedfile"
+        }
+      ]
+    },
+    {
+      "name": "package_unmask",
+      "doc": "Unmask packages in portage.\n\npackage_unmask { 'app-admin/puppet-2.7.1':\n  target  => 'puppet',\n}",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "version",
+          "doc": "\n\n"
+        },
+        {
+          "name": "slot",
+          "doc": "\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The location of the package.unmask file\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "parsed",
+          "doc": "The package_unmask provider backed by parsedfile"
+        }
+      ]
+    },
+    {
+      "name": "package_use",
+      "doc": "Set use flags for a package.\n\npackage_use { 'app-admin/puppet':\n  use    => ['augeas', '-rrdtool'],\n  target => 'puppet',\n}",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        },
+        {
+          "name": "version",
+          "doc": "\n\n"
+        },
+        {
+          "name": "slot",
+          "doc": "\n\n"
+        },
+        {
+          "name": "use",
+          "doc": "The flag use flag(s) to apply\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The location of the package.use file\n\n"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "parsed",
+          "doc": "The package_use provider that uses the ParsedFile class"
+        }
+      ]
+    }
+  ],
+  "checksums": {
+
+  }
+}

@@ -12,7 +12,7 @@ mod "puppetlabs/inifile"
 mod "zack/r10k"
 mod "gentoo/portage"
 mod "thias/vsftpd"
-
+mod "puppetlabs/tomcat"
 
 # Modules from Github using various references
 mod "wordpress",
